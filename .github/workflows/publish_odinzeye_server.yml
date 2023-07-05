@@ -1,0 +1,33 @@
+name: Publish to Jitpack
+on:
+  release:
+    types: [created]
+
+jobs:
+  remote_repo:
+    runs-on: ubuntu-latest
+
+    env:
+      USER_NAME: "abdelali-elhammadi-nw"
+      USER_EMAIl: "abdelali.el-hammadi@nimbleways.com"
+      ACCOUNT_TOKEN: "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"
+
+    steps:
+
+     - uses: actions/checkout@v3
+
+     - run: |
+          mkdir remote_repo
+          cp -r ./odinzeye/. ./remote_repo
+          
+     - run: |
+          cd remote_repo
+          git init
+          git config --global user.name "${{ env.USER_NAME }}"
+          git config --global user.email "${{ env.USER_EMAIL }}"
+          git remote add origin https://${{ env.USER_NAME }}:${{ env.ACCOUNT_TOKEN }}@github.com/odinzeye/Odinzeye_server.git
+          git checkout -b main
+          git add .
+          git commit -m "New release: ${{ github.event.release.tag_name }}"
+          git push -u origin main -f
+

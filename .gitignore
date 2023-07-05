@@ -1,0 +1,26 @@
+target/
+**/.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+uploads/
+../uploads
+### IntelliJ IDEA ###
+**/.idea/
+.idea/
+*.iws
+*.iml
+*.ipr
+
+bin/
+
+### VS Code ###
+.vscode/
+.settings/
+### macOS ###
+.DS_Store
+
+.classpath
+.project
+.factorypath
+
